@@ -5,13 +5,24 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io.connect(window.location.href);
-      socket.on('news', function (data) {
+      socket.on('chat', function (data) {
         console.log(data);
-        socket.emit('my other event', { my: 'data' });
+      });
+      
+      function envia_msg() {
+        socket.emit('chat_in', { msg: $('#') });
+      }
+      
+      $(document).ready(function() {
+        $('#but_ok').live('click', function() {
+          socket.emit('chat_in', { msg: $('#but_ok').val() });
+        });
       });
     </script>
   </head>
   <body>
-    chat
+    <div id="chat" style="width: 400px; height: 300px; overflow-y: scroll; overflow-x: auto;" />
+    <input type="text" id="texto" style="width: 300px;" />
+    <input type="button" id="but_ok" value="  OK  " />
   </body>
 </html>

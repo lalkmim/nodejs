@@ -9,8 +9,8 @@ app.get('/', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+  socket.emit('chat', { msg: 'conectado!' });
+  socket.on('chat', function (data) {
+    socket.emit('chat', { msg: 'received!' });
   });
 });
