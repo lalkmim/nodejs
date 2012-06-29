@@ -8,15 +8,13 @@
       var socket = io.connect(window.location.href);
       socket.on('chat', function (data) {
         console.log(data);
+        $('#chat').append('<br/>');
+        $('#chat').append(data.msg);
       });
-      
-      function envia_msg() {
-        socket.emit('chat_in', { msg: $('#') });
-      }
       
       $(document).ready(function() {
         $('#but_ok').live('click', function() {
-          socket.emit('chat_in', { msg: $('#but_ok').val() });
+          socket.emit('chat_in', { msg: $('#text').val() });
         });
       });
     </script>
