@@ -9,9 +9,13 @@ app.get('/', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('chat', { msg: 'conectado!' });
+  socket.emit('chat', { msg: 'Conectado!' });
+                        hora: new Date(),
+                        autor: 'SERVIDOR' });
   socket.on('chat', function (data) {
     console.log(data);
-    socket.emit('chat', { msg: data.msg });
+    socket.emit('chat', { msg: data.msg,
+                          hora: new Date(),
+                          nome: data.nome });
   });
 });
