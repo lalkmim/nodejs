@@ -16,7 +16,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('chat', function (data) {
     console.log(data);
     socket.emit('chat', { msg: data.msg,
-                          hora: new Date(),
+                          hora: data.hoa,
                           autor: data.autor });
   });
 });

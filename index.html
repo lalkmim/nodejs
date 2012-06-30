@@ -13,6 +13,7 @@
         
         $('#but_ok').live('click', function() {
           socket.emit('chat', { msg: $('#texto').val(),
+                                hora: new Date(),
                                 autor: $('#nome').val() });
         });
         
