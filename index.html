@@ -5,19 +5,30 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script>
-      var socket = io.connect(window.location.href);
-      socket.on('chat', function (data) {
-        console.log(data);
-        $('#chat').append('<br/>');
-        $('#chat').append(data.msg);
-      });
+      var socket = null;
       
       $(document).ready(function() {
-        $('#texto').css('display', 'none');
-        $('#but_ok').css('display', 'none');
+        $('#div_texto').css('display', 'none');
+        $('#div_conectar').css('display', 'block');
         
         $('#but_ok').live('click', function() {
           socket.emit('chat', { msg: $('#texto').val() });
+        });
+        
+        $('#but_conectar').live('click', function() {
+          socket = io.connect(window.location.href);
+          socket.on('chat', function (data) {
+            $('#div_conectar').css('display', 'none');
+            $('#div_texto').css('display', 'block');
+            
+            console.log(data);
+            $('#chat').append('<br/>[');
+            $('#chat').append(data.hora);
+            $('#chat').append('] ');
+            $('#chat').append(data.autor);
+            $('#chat').append(': ');
+            $('#chat').append(data.msg);
+          });
         });
       });
     </script>
@@ -25,7 +36,14 @@
   <body>
     <div id="chat" style="width: 400px; height: 300px; overflow-y: scroll; overflow-x: auto;">
     </div>
-    <input type="text" id="texto" style="width: 300px;" />
-    <input type="button" id="but_ok" value="  OK  " />
+    <div id="div_conectar">
+      Nome:
+      <input type="text" id="nome" style="width: 300px;" />
+      <input type="button" id="but_conectar" value="  Conectar  " />
+    </div>
+    <div id="div_texto">
+      <input type="text" id="texto" style="width: 300px;" />
+      <input type="button" id="but_ok" value="  OK  " />
+    </div>
   </body>
 </html>
