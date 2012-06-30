@@ -13,6 +13,9 @@
       });
       
       $(document).ready(function() {
+        $('#text').css('display: none;');
+        $('#but_ok').css('display: none;');
+        
         $('#but_ok').live('click', function() {
           socket.emit('chat', { msg: $('#texto').val() });
         });
