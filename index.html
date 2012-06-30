@@ -12,7 +12,8 @@
         $('#div_conectar').css('display', 'block');
         
         $('#but_ok').live('click', function() {
-          socket.emit('chat', { msg: $('#texto').val() });
+          socket.emit('chat', { msg: $('#texto').val(),
+                                autor: $('#nome').val() });
         });
         
         $('#but_conectar').live('click', function() {
