@@ -9,7 +9,7 @@ $(document).ready(function() {
 			msg: $('#texto').val(),
 			dataHora: formatHour(new Date()),
 			autor: $('#nome').val() });
-	}
+	});
 	
 	$('#but_conectar').live('click', function() {
 		$('#but_conectar').attr('disabled', 'disabled');
