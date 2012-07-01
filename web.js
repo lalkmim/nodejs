@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 
 io.sockets.on('connection', function (socket) {
   socket.emit('chat', { msg: 'Conectado!',
-                        dataHora: new Date(),
+                        dataHora: formatHour(new Date()),
                         autor: 'SERVIDOR' });
 
   socket.on('chat', function (data) {
