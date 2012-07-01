@@ -29,4 +29,10 @@ $(document).ready(function() {
 			$('#chat').append(data.msg);
 		});
 	});
+	
+	$('#texto').keypress(function(e) {
+        if(e.which == 13) {
+            $('#but_ok').click();
+        }
+    });
 });
