@@ -25,7 +25,7 @@
             
             console.log(data);
             $('#chat').append('<br/>[');
-            $('#chat').append(data.hora);
+            $('#chat').append(data.hora.formatHour());
             $('#chat').append('] ');
             $('#chat').append(data.autor);
             $('#chat').append(': ');
@@ -33,6 +33,23 @@
           });
         });
       });
+      
+      Date.prototype.formatHour = function() {
+        var that = this;
+        var temp = '';
+        
+        if(that.getHours() < 10)
+          temp += '0'
+            
+        temp += that.getHours() + ':';
+        
+        if(that.getMinutes() < 10)
+          temp += '0'
+        
+        temp += that.getMinutes();
+            
+        return temp;
+      }
     </script>
   </head>
   <body>
