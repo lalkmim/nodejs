@@ -19,7 +19,7 @@ io.sockets.on('connection', function (socket) {
                           dataHora: data.dataHora,
                           autor: data.autor });
     
-    io.sockets.emit('chat', { msg: data.msg,
+    io.socket.emit('chat', { msg: data.msg,
                           dataHora: data.dataHora,
                           autor: data.autor });
   });
