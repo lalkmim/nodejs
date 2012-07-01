@@ -18,7 +18,8 @@
         });
         
         $('#but_conectar').live('click', function() {
-          $('#but_conectar').attr('disabled', 'disabled')
+          $('#but_conectar').attr('disabled', 'disabled');
+          $('#but_conectar').text('Conectando...');
           socket = io.connect(window.location.href);
           socket.on('chat', function (data) {
             $('#div_conectar').css('display', 'none');
