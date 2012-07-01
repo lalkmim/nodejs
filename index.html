@@ -13,7 +13,7 @@
         
         $('#but_ok').live('click', function() {
           socket.emit('chat', { msg: $('#texto').val(),
-                                hora: formatHour(new Date()),
+                                dataHora: formatHour(new Date()),
                                 autor: $('#nome').val() });
         });
         
@@ -27,7 +27,7 @@
             
             console.log(data);
             $('#chat').append('<br/>[');
-            $('#chat').append(data.hora);
+            $('#chat').append(data.dataHora);
             $('#chat').append('] ');
             $('#chat').append(data.autor);
             $('#chat').append(': ');
@@ -41,12 +41,12 @@
         var temp = '';
         
         if(that.getHours() < 10)
-          temp += '0'
+          temp += '0';
             
         temp += that.getHours() + ':';
         
         if(that.getMinutes() < 10)
-          temp += '0'
+          temp += '0';
         
         temp += that.getMinutes();
             
