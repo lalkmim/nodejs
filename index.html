@@ -25,7 +25,7 @@
             
             console.log(data);
             $('#chat').append('<br/>[');
-            $('#chat').append(data.hora.formatHour());
+            $('#chat').append(formatHour(data.hora));
             $('#chat').append('] ');
             $('#chat').append(data.autor);
             $('#chat').append(': ');
@@ -34,8 +34,8 @@
         });
       });
       
-      Date.prototype.formatHour = function() {
-        var that = this;
+      function formatHour(dataHora) {
+        var that = dataHora;
         var temp = '';
         
         if(that.getHours() < 10)
