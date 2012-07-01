@@ -2,14 +2,14 @@ var express = require('express');
 var app = express.createServer();
 var io = require('socket.io').listen(app);
 
-app.use('/css', express.static(__dirname + '/static/css'));
-app.use('/js', express.static(__dirname + '/static/js'));
-app.use('/css', express.static(__dirname + '/static/img'));
+app.use('/css', express.static(__dirname + '/public/css'));
+app.use('/js', express.static(__dirname + '/public/js'));
+app.use('/css', express.static(__dirname + '/public/img'));
 
 app.listen(process.env.PORT || 5000);
 
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+  res.sendfile(__dirname + '/public/index.html');
 });
 
 io.sockets.on('connection', function (socket) {
