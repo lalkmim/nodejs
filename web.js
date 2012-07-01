@@ -2,6 +2,10 @@ var app = require('express').createServer();
 
 var io = require('socket.io').listen(app);
 
+app.use('/css', express.static(__dirname + '/static/css'));
+app.use('/js', express.static(__dirname + '/static/js'));
+app.use('/css', express.static(__dirname + '/static/img'));
+
 app.listen(process.env.PORT || 5000);
 
 app.get('/', function (req, res) {
