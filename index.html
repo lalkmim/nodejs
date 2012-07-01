@@ -18,7 +18,7 @@
         });
         
         $('#but_conectar').live('click', function() {
-          $('#but_conectar').disabled', true)
+          $('#but_conectar').attr('disabled', 'disabled')
           socket = io.connect(window.location.href);
           socket.on('chat', function (data) {
             $('#div_conectar').css('display', 'none');
@@ -36,7 +36,7 @@
       });
       
       function formatHour(dataHora) {
-        var that = new Date(dataHora;
+        var that = new Date(dataHora);
         var temp = '';
         
         if(that.getHours() < 10)
