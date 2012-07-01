@@ -13,13 +13,13 @@
         
         $('#but_ok').live('click', function() {
           socket.emit('chat', { msg: $('#texto').val(),
-                                hora: new Date(),
+                                hora: formatHour(new Date()),
                                 autor: $('#nome').val() });
         });
         
         $('#but_conectar').live('click', function() {
           $('#but_conectar').attr('disabled', 'disabled');
-          $('#but_conectar').text('Conectando...');
+          $('#but_conectar').attr('value', 'Conectando...');
           socket = io.connect(window.location.href);
           socket.on('chat', function (data) {
             $('#div_conectar').css('display', 'none');
@@ -27,7 +27,7 @@
             
             console.log(data);
             $('#chat').append('<br/>[');
-            $('#chat').append(formatHour(data.hora));
+            $('#chat').append(data.hora);
             $('#chat').append('] ');
             $('#chat').append(data.autor);
             $('#chat').append(': ');
