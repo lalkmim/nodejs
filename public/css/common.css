@@ -3,14 +3,19 @@ body {
   font-size: 12px;
 }
 
-article, aside, figcaption, figure, footer, header, hgroup, nav, section {
+article, figcaption, figure, footer, header, hgroup, nav {
   display: block;
+}
+
+section, aside {
+  display: inline-block;
+  vertical-align: top
 }
 
 #chat {
   width: 400px; height: 300px; overflow-y: scroll; overflow-x: auto;
 }
 
-#nome, #text {
+#nome, #texto {
    width: 300px;
 }
