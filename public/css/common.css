@@ -1,4 +1,8 @@
 body {
-	font-family: helvetica, verdana;
-	font-size: 12px;
+  font-family: helvetica, verdana;
+  font-size: 12px;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
 }
