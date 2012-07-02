@@ -36,7 +36,7 @@ io.sockets.on('connection', function (socket) {
       
       socket.emit('chat', {
         acao: 'mensagem',
-        msg: 'Conectado! Bem-vindo ' + dados.autor,
+        msg: 'Conectado! Bem-vindo ' + dados.autor + '.',
         dataHora: formatHour(dataHora),
         autor: 'SERVIDOR'
       });
