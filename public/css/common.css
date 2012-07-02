@@ -9,7 +9,8 @@ article, figcaption, figure, footer, header, hgroup, nav {
 
 section, aside {
   display: inline-block;
-  vertical-align: top
+  vertical-align: top;
+  border: 1px solid black;
 }
 
 #chat {
