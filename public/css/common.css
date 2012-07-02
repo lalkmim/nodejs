@@ -4,5 +4,13 @@ body {
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, nav, section {
-    display: block;
+  display: block;
+}
+
+#chat {
+  width: 400px; height: 300px; overflow-y: scroll; overflow-x: auto;
+}
+
+#nome, #text {
+   width: 300px;
 }

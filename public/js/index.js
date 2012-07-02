@@ -48,8 +48,8 @@ $(document).ready(function() {
   });
   
   $('#texto').keypress(function(e) {
-        if(e.which == 13 || e.keyCode == 13) {
-            $('#but_ok').click();
-        }
-    });
+    if(e.which == 13 || e.keyCode == 13) {
+      $('#but_ok').click();
+    }
+  });
 });
