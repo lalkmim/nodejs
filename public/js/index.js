@@ -1,5 +1,5 @@
 var socket = null;
-      
+
 $(document).ready(function() {
   $('#div_texto').css('display', 'none');
   $('#div_conectar').css('display', 'block');
@@ -40,8 +40,9 @@ $(document).ready(function() {
         $('#div_usuarios').html('');
         for(var i in dados.usuarios) {
           var user = dados.usuarios[i];
+          $('#div_usuarios').append('<a href="#" onclick="$(\'#texto\').text(\'' + user.nome + ': \');">')
           $('#div_usuarios').append(user.nome);
-          $('#div_usuarios').append('<br/>');
+          $('#div_usuarios').append('</a><br/>');
         }
       }
     });
