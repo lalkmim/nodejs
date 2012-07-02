@@ -2,6 +2,8 @@ var express = require('express');
 var app = express.createServer();
 var io = require('socket.io').listen(app);
 
+var usuarios = new Array();
+
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/js', express.static(__dirname + '/public/js'));
 app.use('/css', express.static(__dirname + '/public/img'));
@@ -13,19 +15,46 @@ app.get('/', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-  console.log('socket: ' + socket);
+  console.log('socket.transport: ' + socket.transport);
+  console.log('socket.transport.sessionid: ' + socket.transport.sessionid);
   
-  var dataHora = new Date();
-  dataHora.setHours(dataHora.getHours() - 3);
-  socket.emit('chat', { msg: 'Conectado!',
-                        dataHora: formatHour(dataHora),
-                        autor: 'SERVIDOR' });
-
-  socket.on('chat', function (data) {
-    console.log(data);
-    io.sockets.emit('chat', { msg: data.msg,
-                          dataHora: data.dataHora,
-                          autor: data.autor });
+  socket.on('chat', function (dados) {
+    console.log(dados);
+    if(dados.acao == 'login') {
+      var dataHora = new Date();
+      dataHora.setHours(dataHora.getHours() - 3);
+      
+      usuarios.push({
+        id: socket.transport.sessionid,
+        nome: dados.autor
+      });
+      
+      io.sockets.emit('chat', {
+        acao: 'usuarios',
+        usuarios: usuarios
+      });
+      
+      socket.emit('chat', {
+        acao: 'mensagem',
+        msg: 'Conectado! Bem-vindo ' + dados.autor,
+        dataHora: formatHour(dataHora),
+        autor: 'SERVIDOR'
+      });
+      
+      socket.broadcast.emit('chat', {
+        acao: 'mensagem',
+        msg: dados.autor + ' entrou.',
+        dataHora: formatHour(dataHora),
+        autor: 'SERVIDOR'
+      });
+    } else if(dados.acao == 'mensagem') {
+      io.sockets.emit('chat', {
+        acao: 'mensagem',
+        msg: dados.msg,
+        dataHora: dados.dataHora,
+        autor: dados.autor
+      });
+    }
   });
 });
 
