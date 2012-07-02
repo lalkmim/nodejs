@@ -1,6 +1,7 @@
 body {
   font-family: helvetica, verdana;
   font-size: 12px;
+  margin: auto;
 }
 
 article, figcaption, figure, footer, header, hgroup, nav {
@@ -11,6 +12,11 @@ section, aside {
   display: inline-block;
   vertical-align: top;
   border: 1px solid black;
+  heigth: 400px;
+}
+
+aside {
+  width: 100px;
 }
 
 #chat {
