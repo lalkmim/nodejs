@@ -9,24 +9,33 @@
     <link rel="stylesheet" href="/css/common.css" type="text/css" media="screen" charset="utf-8">
   </head>
   <body>
+    <header>
+      <h1></h1>
+      <nav>
+        <ul>
+          <li><a href=".">Home</a></li>
+        </ul>
+      </nav>
+    </header>
     <section>
-      <div id="chat" style="width: 400px; height: 300px; overflow-y: scroll; overflow-x: auto;"></div>
-      <div id="div_conectar">
-        Nome:
-        <input type="text" id="nome" style="width: 300px;" />
-        <input type="button" id="but_conectar" value="  Conectar  " />
-      </div>
-      <div id="div_texto">
-        Mensagem:
-        <input type="text" id="texto" style="width: 300px;" />
-        <input type="button" id="but_ok" value="  ok  " />
-      </div>
+      <article>
+        <div id="chat" style="width: 400px; height: 300px; overflow-y: scroll; overflow-x: auto;"></div>
+        <div id="div_conectar">
+          Nome:
+          <input type="text" id="nome" style="width: 300px;" />
+          <input type="button" id="but_conectar" value="  Conectar  " />
+        </div>
+        <div id="div_texto">
+          Mensagem:
+          <input type="text" id="texto" style="width: 300px;" />
+          <input type="button" id="but_ok" value="  ok  " />
+        </div>
+      </article>
     </section>
-    <sidebar>
+    <aside>
       Usuários:
       <div id="div_usuarios">
       </div>
-    </sidebar>
-    
+    </aside>
   </body>
 </html>
