@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Teste Chat</title>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/js/jquery.1.7.2.min.js"></script>
+		<script src="/js/index.js"></script>
+		<script src="/js/common.js"></script>
+		<link rel="stylesheet" href="/css/common.css" type="text/css" media="screen" charset="utf-8">
+	</head>
+	<body>
+		<div id="chat" style="width: 400px; height: 300px; overflow-y: scroll; overflow-x: auto;"></div>
+		<div id="div_conectar">
+			Nome:
+			<input type="text" id="nome" style="width: 300px;" />
+			<input type="button" id="but_conectar" value="  Conectar  " />
+		</div>
+		<div id="div_texto">
+			Mensagem:
+			<input type="text" id="texto" style="width: 300px;" />
+			<input type="button" id="but_ok" value="  ok  " />
+		</div>
+	</body>
+</html>
