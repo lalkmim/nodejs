@@ -13,10 +13,12 @@ app.get('/', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
+  console.log('socket: ' + socket);
+  
   var dataHora = new Date();
   dataHora.setHours(dataHora.getHours() - 3);
   socket.emit('chat', { msg: 'Conectado!',
-                        dataHora: formatHour(dataH),
+                        dataHora: formatHour(dataHora),
                         autor: 'SERVIDOR' });
 
   socket.on('chat', function (data) {
