@@ -3,6 +3,7 @@ var app = express.createServer();
 var io = require('socket.io').listen(app);
 
 var usuarios = new Array();
+var salas = new Array();
 
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/js', express.static(__dirname + '/public/js'));
@@ -26,12 +27,13 @@ io.sockets.on('connection', function (socket) {
     if(dados.acao == 'login') {
       usuarios.push({
         id: socket.transport.sessionid,
-        nome: dados.autor
+        nome: dados.autor,
+        socket: socket
       });
       
       io.sockets.emit('chat', {
-        acao: 'usuarios',
-        usuarios: usuarios
+        acao: 'salas',
+        salas: salas
       });
       
       socket.emit('chat', {
@@ -52,7 +54,8 @@ io.sockets.on('connection', function (socket) {
         acao: 'mensagem',
         msg: dados.msg,
         dataHora: formatHour(dataHora),
-        autor: dados.autor
+        autor: dados.autor,
+        sala: sala
       });
     }
   });

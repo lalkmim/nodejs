@@ -1,4 +1,5 @@
 var socket = null;
+var salas = new Array();
 
 $(document).ready(function() {
   $('#div_texto').css('display', 'none');
@@ -6,7 +7,7 @@ $(document).ready(function() {
   
   $('#but_ok').live('click', function() {
     socket.emit('chat', {
-      acao: 'mensagem',
+      sala: $('#div_salas.sala_selecionada').text(),
       msg: $('#texto').val(),
       autor: $('#nome').val() });
   });
@@ -17,29 +18,31 @@ $(document).ready(function() {
     
     socket = io.connect(window.location.href);
     
-    socket.emit('chat', {
-      acao: 'login',
-      msg: $('#texto').val(),
-      autor: $('#nome').val() });
+    socket.emit('login', { 
+      autor: $('#nome').val()
+    });
+    
+    socket.on('usuarios', function(dados) {
+      $('#div_usuarios').html('');
+      for(var i in dados.usuarios) {
+        var user = dados.usuarios[i];
+        $('#div_usuarios').append('<a href="#" onclick="$(\'#texto\').attr(\'value\', this.value + \': \'); $(\'#texto\').focus();">' + user.nome + '</a><br/>');
+      }
+    });
+    
+    socket.on('salas', function(dados) {
+    });
     
     socket.on('chat', function (dados) {
-      if(dados.acao == 'mensagem') {
-        $('#div_conectar').css('display', 'none');
-        $('#div_texto').css('display', 'block');
+      $('#div_conectar').css('display', 'none');
+      $('#div_texto').css('display', 'block');
         
-        console.log(dados);
-        var estilo = 'linhaChat';
-        if(dados.msg.indexOf($('#nome').val()) >= 0)
-          estilo = 'linhaChatCitado';
+      console.log(dados);
+      var estilo = 'linhaChat';
+      if(dados.msg.indexOf($('#nome').val()) >= 0)
+        estilo = 'linhaChatCitado';
         
-        $('#chat').append('<span class="' + estilo + '">[' + dados.dataHora + '] ' + dados.autor + '>> ' + dados.msg + '</span>');
-      } else if(dados.acao == 'usuarios') {
-        $('#div_usuarios').html('');
-        for(var i in dados.usuarios) {
-          var user = dados.usuarios[i];
-          $('#div_usuarios').append('<a href="#" onclick="$(\'#texto\').attr(\'value\', \'' + user.nome + ': \'); $(\'#texto\').focus();">' + user.nome + '</a><br/>');
-        }
-      }
+      $('#chat').append('<span class="' + estilo + '">[' + dados.dataHora + '] ' + dados.autor + '>> ' + dados.msg + '</span>');
     });
   });
   
