@@ -8,7 +8,6 @@ $(document).ready(function() {
     socket.emit('chat', {
       acao: 'mensagem',
       msg: $('#texto').val(),
-      dataHora: formatHour(new Date()),
       autor: $('#nome').val() });
   });
   
@@ -21,7 +20,6 @@ $(document).ready(function() {
     socket.emit('chat', {
       acao: 'login',
       msg: $('#texto').val(),
-      dataHora: formatHour(new Date()),
       autor: $('#nome').val() });
     
     socket.on('chat', function (dados) {
@@ -35,7 +33,7 @@ $(document).ready(function() {
           estilo = 'linhaChatCitado';
         
         $('#chat').append('<span class="');
-        $('#chat').append(estilo)
+        $('#chat').append(estilo);
         $('#chat').append('">' + dados.dataHora);
         $('#chat').append('] ');
         $('#chat').append(dados.autor);

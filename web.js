@@ -20,10 +20,10 @@ io.sockets.on('connection', function (socket) {
   
   socket.on('chat', function (dados) {
     console.log(dados);
+    
+    var dataHora = new Date();
+    dataHora.setHours(dataHora.getHours() - 3);
     if(dados.acao == 'login') {
-      var dataHora = new Date();
-      dataHora.setHours(dataHora.getHours() - 3);
-      
       usuarios.push({
         id: socket.transport.sessionid,
         nome: dados.autor
@@ -51,7 +51,7 @@ io.sockets.on('connection', function (socket) {
       io.sockets.emit('chat', {
         acao: 'mensagem',
         msg: dados.msg,
-        dataHora: dados.dataHora,
+        dataHora: formatHour(dataHora),
         autor: dados.autor
       });
     }
