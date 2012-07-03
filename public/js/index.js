@@ -40,9 +40,7 @@ $(document).ready(function() {
         $('#div_usuarios').html('');
         for(var i in dados.usuarios) {
           var user = dados.usuarios[i];
-          $('#div_usuarios').append('<a href="#" onclick="$(\'#texto\').attr(\'value\', \'' + user.nome + ': \');">')
-          $('#div_usuarios').append(user.nome);
-          $('#div_usuarios').append('</a><br/>');
+          $('#div_usuarios').append('<a href="#" onclick="$(\'#texto\').attr(\'value\', \'' + user.nome + ': \');">' + user.nome + '</a><br/>');
         }
       }
     });
