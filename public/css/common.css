@@ -5,7 +5,7 @@ body {
   margin-right: auto;
 }
 
-article, figcaption, figure, footer, header, hgroup, nav, section {
+article, figcaption, figure, footer, header, hgroup, nav {
   display: block;
 }
 
@@ -15,7 +15,7 @@ section, aside {
   heigth: 400px;
 }
 
-aside {
+section, aside {
   display: inline-block;
   width: 100px;
 }
@@ -39,11 +39,7 @@ aside {
 ul {
   list-style-type: none;
   margin: auto;
-  background-color: #000000;
-}
-
-li {
-  float: left;
+  background: #000000;
 }
 
 ul a {
@@ -56,4 +52,8 @@ ul a {
 
 ul a:hover {
   color: #ffffff;
+}
+
+li {
+  float: left;
 }
