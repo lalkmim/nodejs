@@ -5,18 +5,18 @@ body {
   margin-right: auto;
 }
 
-article, figcaption, figure, footer, header, hgroup, nav {
+article, figcaption, figure, footer, header, hgroup, nav, section {
   display: block;
 }
 
 section, aside {
-  display: inline-block;
   vertical-align: top;
   border: 1px solid black;
   heigth: 400px;
 }
 
 aside {
+  display: inline-block;
   width: 100px;
 }
 
@@ -55,5 +55,5 @@ ul a {
 }
 
 ul a:hover {
-  color: #fffff;
+  color: #ffffff;
 }
