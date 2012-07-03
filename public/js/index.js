@@ -30,12 +30,18 @@ $(document).ready(function() {
         $('#div_texto').css('display', 'block');
         
         console.log(dados);
-        $('#chat').append('<br/>[');
-        $('#chat').append(dados.dataHora);
+        var estilo = 'linhaChat';
+        if(dados.msg.indexOf($('#nome').val()) >= 0)
+          estilo = 'linhaChatCitado';
+        
+        $('#chat').append('<span class="');
+        $('#chat').append(estilo)
+        $('#chat').append('">' + dados.dataHora);
         $('#chat').append('] ');
         $('#chat').append(dados.autor);
-        $('#chat').append(': ');
+        $('#chat').append('>> ');
         $('#chat').append(dados.msg);
+        $('#chat').append('</span>');
       } else if(dados.acao == 'usuarios') {
         $('#div_usuarios').html('');
         for(var i in dados.usuarios) {
