@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
     <title>Teste Chat</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/jquery.1.7.2.min.js"></script>
     <script src="/js/index.js"></script>
     <script src="/js/common.js"></script>
-    <link rel="stylesheet" href="/css/common.css" type="text/css" media="screen" charset="utf-8">
+    <link charset="utf-8" href="/css/common.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <header>
       <h1>Teste</h1>
       <nav>
         <ul>
-          <li><a href=".">Home</a></li>
+          <li>
+            <a href=".">Home</a></li>
         </ul>
       </nav>
     </header>
@@ -22,17 +23,17 @@
       <article id="chat"></article>
       <article id="div_conectar">
         Nome:
-        <input type="text" id="nome" />
-        <input type="button" id="but_conectar" value="  Conectar  " />
+        <input id="nome" type="text" />
+        <input id="but_conectar" type="button" value="  Conectar  " />
       </article>
       <article id="div_texto">
         Mensagem:
-        <input type="text" id="texto" />
-        <input type="button" id="but_ok" value="  ok  " />
+        <input id="texto" type="text" />
+        <input id="but_ok" type="button" value="  ok  " />
       </article>
     </section>
     <aside>
-      Usuários:
+      Usu&aacute;rios:
       <article id="div_usuarios">
       </article>
     </aside>
