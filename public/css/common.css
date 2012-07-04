@@ -36,10 +36,14 @@ aside {
   background-color: yellow;
 }
 
+nav {
+  background: #000000;
+  height: 20p
+}
+
 ul {
   list-style-type: none;
   margin: auto;
-  background: #000000;
   display: block;
   vertical-align: middle;
 }
@@ -57,5 +61,5 @@ ul a:hover {
 
 li {
   float: left;
-  height: 20px
+  height: 20px;
 }
