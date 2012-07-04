@@ -40,13 +40,14 @@ ul {
   list-style-type: none;
   margin: auto;
   background: #000000;
+  display: block;
+  height: 30
 }
 
 ul a {
   color: #aaaaaa;
   padding-right: 32px;
   padding-left: 32px;
-  line-height: 80px;
   text-decoration: none;
 }
 
