@@ -10,13 +10,13 @@ article, figcaption, figure, footer, header, hgroup, nav {
 }
 
 section, aside {
+  display: inline-block;
   vertical-align: top;
   border: 1px solid black;
   heigth: 400px;
 }
 
-section, aside {
-  display: inline-block;
+aside {
   width: 100px;
 }
 
