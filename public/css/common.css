@@ -28,7 +28,7 @@ aside {
    width: 300px;
 }
 
-.linhaChat, .linhaChatCitado {
+.linhaChat, .linhaChatCitado, .linhaSala {
   display: block;
 }
 
@@ -38,7 +38,7 @@ aside {
 
 nav {
   background: #000000;
-  height: 20p
+  vertical-align: middle;
 }
 
 ul {
@@ -46,6 +46,7 @@ ul {
   margin: auto;
   display: block;
   vertical-align: middle;
+  height: 20px;
 }
 
 ul a {
@@ -61,5 +62,5 @@ ul a:hover {
 
 li {
   float: left;
-  height: 20px;
+  vertical-align: middle;
 }

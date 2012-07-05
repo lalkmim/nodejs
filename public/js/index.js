@@ -2,8 +2,9 @@ var socket = null;
 var salas = new Array();
 
 $(document).ready(function() {
-  $('#div_texto').css('display', 'none');
   $('#div_conectar').css('display', 'block');
+  $('#div_entrar').css('display', 'none');
+  $('#div_texto').css('display', 'none');
   
   $('#but_ok').live('click', function() {
     socket.emit('chat', {
@@ -31,10 +32,22 @@ $(document).ready(function() {
     });
     
     socket.on('salas', function(dados) {
+      $('#div_salas').html('');
+      for(var i in dados.salas) {
+        var sala = dados.salas[i];
+        $('#div_salas').append('<span class="linhaSala">' + sala.nome + '</span>');
+      }
+    });
+    
+    socket.on('logged_in', function(dados) {
+      $('#div_conectar').css('display', 'none');
+      $('#div_entrar').css('display', 'block');
+      $('#div_texto').css('display', 'none');
     });
     
     socket.on('chat', function (dados) {
       $('#div_conectar').css('display', 'none');
+      $('#div_entrar').css('display', 'none');
       $('#div_texto').css('display', 'block');
         
       console.log(dados);

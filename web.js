@@ -31,7 +31,7 @@ io.sockets.on('connection', function (socket) {
         socket: socket
       });
       
-      io.sockets.emit('chat', {
+      io.sockets.emit('salas', {
         acao: 'salas',
         salas: salas
       });
