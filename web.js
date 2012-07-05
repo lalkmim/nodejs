@@ -7,7 +7,8 @@ var salas = new Array();
 
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/js', express.static(__dirname + '/public/js'));
-app.use('/css', express.static(__dirname + '/public/img'));
+app.use('/img', express.static(__dirname + '/public/img'));
+app.use('/images', express.static(__dirname + '/public/img'));
 
 app.listen(process.env.PORT || 5000);
 
