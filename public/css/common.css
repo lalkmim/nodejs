@@ -28,12 +28,16 @@ aside {
    width: 300px;
 }
 
-.linhaChat, .linhaChatCitado, .linhaSala {
+.linhaChat, .linhaChatCitado, .linhaSala, .linhaUsuario {
   display: block;
 }
 
 .linhaChatCitado {
   background-color: yellow;
+}
+
+.linhaUsuario, .linhaSala {
+  cursor: p
 }
 
 nav {

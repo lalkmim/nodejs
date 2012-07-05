@@ -6,14 +6,8 @@ $(document).ready(function() {
   $('#div_entrar').css('display', 'none');
   $('#div_texto').css('display', 'none');
   
-  $('#but_ok').live('click', function() {
-    socket.emit('chat', {
-      sala: $('#div_salas.sala_selecionada').text(),
-      msg: $('#texto').val(),
-      autor: $('#nome').val() });
-  });
-  
   $('#but_conectar').live('click', function() {
+    // Estabelecer conexão
     $('#but_conectar').attr('disabled', 'disabled');
     $('#but_conectar').attr('value', 'Conectando...');
     
@@ -23,26 +17,69 @@ $(document).ready(function() {
       autor: $('#nome').val()
     });
     
-    socket.on('usuarios', function(dados) {
-      $('#div_usuarios').html('');
-      for(var i in dados.usuarios) {
-        var user = dados.usuarios[i];
-        $('#div_usuarios').append('<a href="#" onclick="$(\'#texto\').attr(\'value\', this.value + \': \'); $(\'#texto\').focus();">' + user.nome + '</a><br/>');
+    // Eventos dos botões
+    $('#but_ok').live('click', function() {
+    socket.emit('chat', {
+      sala: $('#sala').val(),
+      msg: $('#texto').val(),
+      autor: $('#nome').val() });
+    });
+    
+    $('#texto').keypress(function(e) {
+      if(e.which == 13 || e.keyCode == 13) {
+        $('#but_ok').click();
       }
     });
     
-    socket.on('salas', function(dados) {
-      $('#div_salas').html('');
-      for(var i in dados.salas) {
-        var sala = dados.salas[i];
-        $('#div_salas').append('<span class="linhaSala">' + sala.nome + '</span>');
+    $('#but_entrar').live('click', function() {
+      socket.emit('entrar_sala', {
+        sala: $('#sala').val(),
+        msg: $('#texto').val(),
+        autor: $('#nome').val() });
+    });
+    
+    $('#sala').keypress(function(e) {
+      if(e.which == 13 || e.keyCode == 13) {
+        $('#but_entrar').click();
       }
     });
     
+    // Eventos do servidor
     socket.on('logged_in', function(dados) {
       $('#div_conectar').css('display', 'none');
       $('#div_entrar').css('display', 'block');
       $('#div_texto').css('display', 'none');
+    });
+    
+    // Deprecated - os usuários devem ser atualizados ao selec
+    socket.on('atualizar_usuarios', function(dados) {
+      $('#div_usuarios').html('');
+      for(var i in dados.usuarios) {
+        var user = dados.usuarios[i];
+        
+        var link = '<span';
+        link += ' class="linhaUsuario"';
+        link += ' onclick="$(\'#texto\').attr(\'value\', this.value + \': \'); $(\'#texto\').focus();">';
+        link += user.nome;
+        link += '</span>';
+        
+        $('#div_usuarios').append(link);
+      }
+    });
+    
+    socket.on('atualizar_salas', function(dados) {
+      $('#div_salas').html('');
+      for(var i in dados.salas) {
+        var sala = dados.salas[i];
+        
+        var span = '<span';
+        span += ' class="linhaSala"';
+        span += ' onclick="$(\'#sala\').attr(\'value\', $(\'#div_salas.sala_selecionada\').text() + \': \');">';
+        span += sala.nome;
+        span += '</span>';
+        
+        $('#div_salas').append();
+      }
     });
     
     socket.on('chat', function (dados) {
@@ -52,16 +89,13 @@ $(document).ready(function() {
         
       console.log(dados);
       var estilo = 'linhaChat';
+      
       if(dados.msg.indexOf($('#nome').val()) >= 0)
         estilo = 'linhaChatCitado';
         
-      $('#chat').append('<span class="' + estilo + '">[' + dados.dataHora + '] ' + dados.autor + '>> ' + dados.msg + '</span>');
+      var span = '<span class="' + estilo + '">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
+      
+      $('#chat').append(span);
     });
-  });
-  
-  $('#texto').keypress(function(e) {
-    if(e.which == 13 || e.keyCode == 13) {
-      $('#but_ok').click();
-    }
   });
 });

@@ -19,45 +19,57 @@ io.sockets.on('connection', function (socket) {
   console.log('socket.transport: ' + socket.transport);
   console.log('socket.transport.sessionid: ' + socket.transport.sessionid);
   
-  socket.on('chat', function (dados) {
+  socket.on('login', function(dados) {
     console.log(dados);
     
     var dataHora = new Date();
     dataHora.setHours(dataHora.getHours() - 3);
-    if(dados.acao == 'login') {
-      usuarios.push({
-        id: socket.transport.sessionid,
-        nome: dados.autor,
-        socket: socket
-      });
-      
-      io.sockets.emit('salas', {
-        acao: 'salas',
-        salas: salas
-      });
-      
-      socket.emit('chat', {
-        acao: 'mensagem',
-        msg: 'Conectado! Bem-vindo ' + dados.autor + '.',
-        dataHora: formatHour(dataHora),
-        autor: 'SERVIDOR'
-      });
-      
-      socket.broadcast.emit('chat', {
-        acao: 'mensagem',
-        msg: dados.autor + ' entrou.',
-        dataHora: formatHour(dataHora),
-        autor: 'SERVIDOR'
-      });
-    } else if(dados.acao == 'mensagem') {
-      io.sockets.emit('chat', {
-        acao: 'mensagem',
-        msg: dados.msg,
-        dataHora: formatHour(dataHora),
-        autor: dados.autor,
-        sala: sala
-      });
-    }
+    
+    usuarios.push({
+      id: socket.transport.sessionid,
+      nome: dados.autor,
+      socket: socket
+    });
+    
+    socket.emit('logged_in', {
+      msg: 'Conectado! Bem-vindo ' + dados.autor + '.',
+      dataHora: formatHour(dataHora),
+      autor: 'SERVIDOR'
+    });
+    
+    io.sockets.emit('salas', {
+      salas: salas
+    });
+    
+    socket.emit('chat', {
+      msg: 'Conectado! Bem-vindo ' + dados.autor + '.',
+      dataHora: formatHour(dataHora),
+      autor: 'SERVIDOR'
+    });
+  });
+  
+  socket.on('entrar_sala', function(dados) {
+    socket.join(dados.sala)
+    socket.broadcast.to(dados.sala).emit('chat', {
+      msg: dados.autor + ' entrou.',
+      dataHora: formatHour(dataHora),
+      autor: 'SERVIDOR'
+    });
+  });
+  
+  socket.on('chat', function (dados) {
+    console.log(dados);
+    
+    var dataHora = new Date();
+    dataHora.setHours(dataHora.getHours() - 3);    
+    
+    io.sockets.emit('chat', {
+      acao: 'mensagem',
+      msg: dados.msg,
+      dataHora: formatHour(dataHora),
+      autor: dados.autor,
+      sala: sala
+    });
   });
 });
 
