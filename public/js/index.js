@@ -6,6 +6,8 @@ $(document).ready(function() {
   $('#div_entrar').css('display', 'none');
   $('#div_texto').css('display', 'none');
   
+  $('#chat').tabs();
+  
   $('#but_conectar').live('click', function() {
     // Estabelecer conexão
     $('#but_conectar').attr('disabled', 'disabled');
@@ -51,7 +53,7 @@ $(document).ready(function() {
       $('#div_texto').css('display', 'none');
     });
     
-    // Deprecated - os usuários devem ser atualizados ao selec
+    // Deprecated - os usuários devem ser atualizados ao selecionar uma sala
     socket.on('atualizar_usuarios', function(dados) {
       $('#div_usuarios').html('');
       for(var i in dados.usuarios) {
@@ -95,7 +97,7 @@ $(document).ready(function() {
         
       var span = '<span class="' + estilo + '">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
       
-      $('#chat').append(span);
+      $('#' + dados.sala.i).append(span);
     });
   });
 });
