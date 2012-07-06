@@ -64,7 +64,7 @@ io.sockets.on('connection', function (socket) {
 	
     var sala = null;
 	var nome_sala = dados.sala;
-    if(salas[dados.sala] != null) {
+    if(typeof salas[dados.sala] == 'undefined') {
 	  console.log('>>> 1');
       sala = new Object();
       sala.nome = dados.sala;
