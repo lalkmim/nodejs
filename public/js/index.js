@@ -51,6 +51,16 @@ $(document).ready(function() {
       $('#div_conectar').css('display', 'none');
       $('#div_entrar').css('display', 'block');
       $('#div_texto').css('display', 'none');
+	  
+	  console.log(dados);
+      var estilo = 'linhaChat';
+      
+      if(dados.msg.indexOf($('#nome').val()) >= 0)
+        estilo = 'linhaChatCitado';
+        
+      var span = '<span class="' + estilo + '">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
+      
+      $('#status').append(span);
     });
     
     // Deprecated - os usuários devem ser atualizados ao selecionar uma sala
@@ -97,7 +107,7 @@ $(document).ready(function() {
         
       var span = '<span class="' + estilo + '">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
       
-      $('#' + dados.sala.i).append(span);
+      $('#' + dados.sala.id).append(span);
     });
   });
 });
