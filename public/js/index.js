@@ -34,9 +34,16 @@ $(document).ready(function() {
     });
     
     $('#but_entrar').live('click', function() {
+	  var nome_sala = $('#sala').val();
+	  var nome_autor = $('#nome').val();
+	  
+	  console.log('nome_sala: ' + nome_sala);
+	  console.log('nome_autor: ' + nome_autor);
+	  
       socket.emit('entrar_sala', {
-        sala: $('#sala').val(),
-        autor: $('#nome').val() });
+		sala: nome_sala,
+        autor: nome_autor
+	  });
     });
     
     $('#sala').keypress(function(e) {

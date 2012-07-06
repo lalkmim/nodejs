@@ -55,21 +55,22 @@ io.sockets.on('connection', function (socket) {
   socket.on('entrar_sala', function(dados) {
 	console.log(dados);
     var sala = null;
-    if(!dados.id) {
+    if(salas[dados.sala]) {
       sala = {
-        id: salas.length,
         nome: dados.sala,
         participantes: new Array()
       };
       
-      salas[sala.id] = sala;
+      salas[dados.sala] = sala;
     } else {
-      sala = salas[dados.id];
+      sala = salas[dados.sala];
     }
     
+	console.log(sala);
+	
     var usuario = usuarios[socket.transport.sessionid];
     sala.participantes[usuario.id] = usuario;
-                 
+	
     socket.join(sala.id);
     socket.broadcast.to(sala.id).emit('chat', {
       msg: dados.autor + ' entrou.',
