@@ -56,6 +56,9 @@ io.sockets.on('connection', function (socket) {
   });
   
   socket.on('entrar_sala', function(dados) {
+	var dataHora = new Date();
+    dataHora.setHours(dataHora.getHours() - 3);
+	
 	console.log('>>> entrar_sala.dados: ');
 	console.log(dados);
 	
