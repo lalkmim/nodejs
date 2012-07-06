@@ -17,11 +17,11 @@ app.get('/', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-  console.log('socket.transport: ' + socket.transport);
-  console.log('socket.transport.sessionid: ' + socket.transport.sessionid);
+  console.log('>>> socket.transport: ' + socket.transport);
+  console.log('>>> socket.transport.sessionid: ' + socket.transport.sessionid);
   
   socket.on('login', function(dados) {
-    console.log(dados);
+    console.log('>>> login.dados: ' + dados);
     
     var dataHora = new Date();
     dataHora.setHours(dataHora.getHours() - 3);
@@ -53,21 +53,25 @@ io.sockets.on('connection', function (socket) {
   });
   
   socket.on('entrar_sala', function(dados) {
-	console.log(dados);
+	console.log('>>> entrar_sala.dados: ' + dados);
     var sala = null;
+	var nome_sala = dados.sala;
     if(salas[dados.sala]) {
       sala = new Object();
       sala.nome = dados.sala;
       sala.participantes = new Array();
       
-      salas[dados.sala] = sala;
+      salas[sala.nome] = sala;
     } else {
-      sala = salas[dados.sala];
+      sala = salas[nome_sala];
     }
     
-	console.log(sala);
+	console.log('>>> entrar_sala.sala: ' + sala);
 	
     var usuario = usuarios[socket.transport.sessionid];
+	
+	console.log('>>> entrar_sala.usuario: ' + usuario);
+	
     sala.participantes[usuario.id] = usuario;
 	
     socket.join(sala.id);
@@ -80,7 +84,7 @@ io.sockets.on('connection', function (socket) {
   });
   
   socket.on('chat', function (dados) {
-    console.log(dados);
+    console.log('>>> chat.dados: ' + dados);
     
     var dataHora = new Date();
     dataHora.setHours(dataHora.getHours() - 3);    
