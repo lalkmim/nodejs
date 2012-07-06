@@ -36,7 +36,6 @@ $(document).ready(function() {
     $('#but_entrar').live('click', function() {
       socket.emit('entrar_sala', {
         sala: $('#sala').val(),
-        msg: $('#texto').val(),
         autor: $('#nome').val() });
     });
     
@@ -53,13 +52,7 @@ $(document).ready(function() {
       $('#div_texto').css('display', 'none');
 	  
 	  console.log(dados);
-      var estilo = 'linhaChat';
-      
-      if(dados.msg.indexOf($('#nome').val()) >= 0)
-        estilo = 'linhaChatCitado';
-        
-      var span = '<span class="' + estilo + '">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
-      
+      var span = '<span class="linhaChat">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
       $('#status').append(span);
     });
     

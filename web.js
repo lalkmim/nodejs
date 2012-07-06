@@ -53,6 +53,7 @@ io.sockets.on('connection', function (socket) {
   });
   
   socket.on('entrar_sala', function(dados) {
+	console.log(dados);
     var sala = null;
     if(!dados.id) {
       sala = {
