@@ -59,9 +59,12 @@ io.sockets.on('connection', function (socket) {
 	console.log('>>> entrar_sala.dados: ');
 	console.log(dados);
 	
+	console.log('>>> salas');
+	console.log(salas);
+	
     var sala = null;
 	var nome_sala = dados.sala;
-    if(salas[dados.sala]) {
+    if(salas[dados.sala] != null) {
 	  console.log('>>> 1');
       sala = new Object();
       sala.nome = dados.sala;
