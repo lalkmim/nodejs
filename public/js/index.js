@@ -21,10 +21,11 @@ $(document).ready(function() {
     
     // Eventos dos botões
     $('#but_ok').live('click', function() {
-    socket.emit('chat', {
-      sala: $('#sala').val(),
-      msg: $('#texto').val(),
-      autor: $('#nome').val() });
+	  socket.emit('chat', {
+        sala: $('#sala').val(),
+        msg: $('#texto').val(),
+        autor: $('#nome').val()
+	  });
     });
     
     $('#texto').keypress(function(e) {

@@ -56,10 +56,9 @@ io.sockets.on('connection', function (socket) {
 	console.log(dados);
     var sala = null;
     if(salas[dados.sala]) {
-      sala = {
-        nome: dados.sala,
-        participantes: new Array()
-      };
+      sala = new Object();
+      sala.nome = dados.sala;
+      sala.participantes = new Array();
       
       salas[dados.sala] = sala;
     } else {
