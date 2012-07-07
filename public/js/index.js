@@ -93,6 +93,9 @@ $(document).ready(function() {
     });
     
     socket.on('atualizar_salas', function(dados) {
+	  console.log('atualizar_salas.dados');
+	  console.log(dados);
+	
       $('#div_salas').html('');
       for(var i in dados.salas) {
         var sala = dados.salas[i];
@@ -112,9 +115,10 @@ $(document).ready(function() {
       $('#div_entrar').css('display', 'none');
       $('#div_texto').css('display', 'block');
         
+	  console.log('chat.dados');
       console.log(dados);
+	  
       var estilo = 'linhaChat';
-      
       if(dados.msg.indexOf($('#nome').val()) >= 0)
         estilo = 'linhaChatCitado';
         
