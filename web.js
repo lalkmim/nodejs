@@ -111,13 +111,13 @@ io.sockets.on('connection', function (socket) {
 	console.log(dados);
     
     var dataHora = new Date();
-    dataHora.setHours(dataHora.getHours() - 3);    
-    
-    io.sockets.emit('chat', {
+    dataHora.setHours(dataHora.getHours() - 3);
+	
+	io.sockets.emit('chat', {
       msg: dados.msg,
       dataHora: formatHour(dataHora),
       autor: dados.autor,
-      sala: dados.sala
+      sala: salas[dados.sala]
     });
   });
 });
