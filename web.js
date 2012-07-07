@@ -2,8 +2,8 @@ var express = require('express');
 var app = express.createServer();
 var io = require('socket.io').listen(app);
 
-var usuarios = new Array();
-var salas = new Array();
+var usuarios = new Object();
+var salas = new Object();
 
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/js', express.static(__dirname + '/public/js'));

@@ -1,5 +1,4 @@
 var socket = null;
-var salas = new Array();
 
 $(document).ready(function() {
   $('#div_conectar').css('display', 'block');
