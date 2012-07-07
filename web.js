@@ -117,7 +117,7 @@ io.sockets.on('connection', function (socket) {
       msg: dados.msg,
       dataHora: formatHour(dataHora),
       autor: dados.autor,
-      sala: sala
+      sala: dados.sala
     });
   });
 });

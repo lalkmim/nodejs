@@ -120,7 +120,7 @@ $(document).ready(function() {
         
       var span = '<span class="' + estilo + '">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
       
-      $('#' + dados.sala.id).append(span);
+      $('#' + dados.sala).append(span);
     });
   });
 });
