@@ -89,8 +89,16 @@ io.sockets.on('connection', function (socket) {
 	
     sala.participantes[usuario.id] = usuario;
 	
-    socket.join(sala.id);
-    socket.broadcast.to(sala.id).emit('chat', {
+    socket.join(sala.nome);
+	
+	socket.emit('entrou_sala', {
+	  msg: 'Você entrou na sala #' + sala.nome + '.',
+	  dataHora: formatHour(dataHora),
+	  autor: 'SERVIDOR',
+      sala: sala
+	});
+	
+    socket.broadcast.to(sala.nome).emit('chat', {
       msg: dados.autor + ' entrou.',
       dataHora: formatHour(dataHora),
       autor: 'SERVIDOR',

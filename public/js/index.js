@@ -63,6 +63,18 @@ $(document).ready(function() {
       var span = '<span class="linhaChat">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
       $('#status').append(span);
     });
+	
+	socket.on('entrou_sala', function(dados) {
+      $('#div_conectar').css('display', 'none');
+      $('#div_entrar').css('display', 'none');
+      $('#div_texto').css('display', 'block');
+	  
+	  console.log(dados);
+      var span = '<span class="linhaChat">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
+      $('#status').append(span);
+	  
+	  $('#chat').tabs('add', '', $('#sala').val());
+    });
     
     // Deprecated - os usuários devem ser atualizados ao selecionar uma sala
     socket.on('atualizar_usuarios', function(dados) {
