@@ -6,7 +6,7 @@ $(document).ready(function() {
   $('#div_entrar').css('display', 'none');
   $('#div_texto').css('display', 'none');
   
-  $('#chat').tabs();
+  $('#chat').tabs({closable: true});
   
   $('#but_conectar').live('click', function() {
     // Estabelecer conexão
@@ -106,7 +106,7 @@ $(document).ready(function() {
         span += sala.nome;
         span += '</span>';
         
-        $('#div_salas').append();
+        $('#div_salas').append(span);
       }
     });
     

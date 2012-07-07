@@ -43,9 +43,6 @@ io.sockets.on('connection', function (socket) {
       autor: 'SERVIDOR'
     });
     
-    io.sockets.emit('atualizar_salas', {
-      salas: salas
-    });
     /*    
     socket.emit('chat', {
       msg: 'Conectado! Bem-vindo ' + dados.autor + '.',
@@ -103,6 +100,10 @@ io.sockets.on('connection', function (socket) {
       dataHora: formatHour(dataHora),
       autor: 'SERVIDOR',
       sala: sala
+    });
+	
+	io.sockets.emit('atualizar_salas', {
+      salas: salas
     });
   });
   
