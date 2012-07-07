@@ -124,7 +124,7 @@ $(document).ready(function() {
         
       var span = '<span class="' + estilo + '">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
       
-      $('#' + dados.sala).append(span);
+      $('#' + dados.sala.nome).append(span);
     });
   });
 });
