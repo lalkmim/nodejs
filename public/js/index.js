@@ -73,7 +73,7 @@ $(document).ready(function() {
       var span = '<span class="linhaChat">[' + dados.dataHora + '] ' + dados.autor + ' > ' + dados.msg + '</span>';
       $('#status').append(span);
 	  
-	  $('#chat').tabs('add', '', $('#sala').val());
+	  $('#chat').tabs('add', $('#sala').val(), $('#sala').val());
     });
     
     // Deprecated - os usuários devem ser atualizados ao selecionar uma sala
