@@ -106,7 +106,7 @@ $(document).ready(function() {
         
         var span = '<span';
         span += ' class="linhaSala"';
-        span += ' onclick="$(\'#sala\').attr(\'value\', $(\'#div_salas.sala_selecionada\').text() + \': \');">';
+        span += ' onclick="entrarSala(\'' + sala.nome '\');">';
         span += sala.nome;
         span += '</span>';
         
@@ -137,4 +137,9 @@ function msg(sala, autor, dataHora, msg) {
   var span = '<span class="' + estilo + '">[' + dataHora + '] ' + autor + ' > ' + msg + '</span>';
   
   $('#' + sala).append(span);
+}
+
+function entrarSala(sala) {
+  $('#sala').attr('value', sala);
+  $('#but_entrar').click();
 }
