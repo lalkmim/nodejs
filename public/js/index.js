@@ -113,7 +113,7 @@ $(document).ready(function() {
         $('#div_salas').append(span);
       }
       
-      msg(dados.sala, dados.autor, dados.dataHora, dados.msg)
+      msg('status', dados.autor, dados.dataHora, dados.msg);
     });
     
     socket.on('chat', function (dados) {
