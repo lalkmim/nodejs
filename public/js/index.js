@@ -108,7 +108,7 @@ $(document).ready(function() {
         
         var span = '<span';
         span += ' class="linhaSala"';
-        span += ' id=" nome + '"';
+        span += ' id="' + id + '"';
         span += sala.nome;
         span += '</span>';
         
