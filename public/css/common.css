@@ -70,4 +70,5 @@ ul a:hover {
 li {
   float: left;
   vertical-align: middle;
+  padding-top: 7px;
 }
