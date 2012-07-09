@@ -104,13 +104,34 @@ $(document).ready(function() {
       for(var i in dados.salas) {
         var sala = dados.salas[i];
         
+        var id= 'id_sala_' + sala.nome.replace(/ /i, '');
+        
         var span = '<span';
         span += ' class="linhaSala"';
-        span += ' onclick="entrarSala(\'' + sala.nome + '\');">';
+        span += ' id=" nome + '"';
         span += sala.nome;
         span += '</span>';
         
         $('#div_salas').append(span);
+        
+        $('#' + id).live('dblclick', function() {
+          $('#div_usuarios').html('');
+          for(var i in sala.participantes) {
+            var user = sala.participantes[i];
+            
+            var link = '<span';
+            link += ' class="linhaUsuario"';
+            link += ' onclick="$(\'#texto\').attr(\'value\', this.value + \': \'); $(\'#texto\').focus();">';
+            link += user.nome;
+            link += '</span>';
+            
+            $('#div_usuarios').append(link);
+          }
+        });
+        
+        $('#' + id).live('dblclick', function() {
+          entrarSala(sala.nome);
+        });
       }
       
       msg('status', dados.autor, dados.dataHora, dados.msg);
