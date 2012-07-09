@@ -106,7 +106,7 @@ $(document).ready(function() {
         
         var span = '<span';
         span += ' class="linhaSala"';
-        span += ' onclick="entrarSala(\'' + sala.nome '\');">';
+        span += ' onclick="entrarSala(\'' + sala.nome + '\');">';
         span += sala.nome;
         span += '</span>';
         
