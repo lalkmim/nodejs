@@ -3,6 +3,7 @@ body {
   font-size: 12px;
   margin: auto;
   width: 1024px;
+  background-color: #cccccc;
 }
 
 article, figcaption, figure, footer, header, hgroup, nav {
@@ -14,6 +15,10 @@ section, aside {
   vertical-align: top;
   border: 1px solid black;
   heigth: 400px;
+}
+
+header, footer {
+  background: #000000;
 }
 
 aside {
@@ -44,7 +49,6 @@ aside {
 }
 
 nav {
-  background: #000000;
   vertical-align: middle;
 }
 
