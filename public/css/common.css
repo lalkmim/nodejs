@@ -26,6 +26,7 @@ header h1 {
   text-shadow: #777777 8px 4px 8px;
   background: #ffffff;
   color: #000000;
+  margin: 0;
 }
 
 aside {
