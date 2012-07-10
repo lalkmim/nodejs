@@ -9,12 +9,15 @@ app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/js', express.static(__dirname + '/public/js'));
 app.use('/img', express.static(__dirname + '/public/img'));
 app.use('/images', express.static(__dirname + '/public/img'));
-app.use('/*.html', express.static(__dirname + '/public'));
 
 app.listen(process.env.PORT || 5000);
 
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/public/index.html');
+});
+
+app.get('/batalha_naval', function (req, res) {
+  res.sendfile(__dirname + '/public/batalha_naval.html');
 });
 
 io.sockets.on('connection', function (socket) {
