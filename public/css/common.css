@@ -24,6 +24,8 @@ header, footer {
 
 header h1 {
   text-shadow: #aaaaaa 4px 4px 10px;
+  background: #ffffff;
+  color: #000000;
 }
 
 aside {
