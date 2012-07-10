@@ -22,6 +22,10 @@ header, footer {
   color: #ffffff;
 }
 
+header h1 {
+  text-shadow: #6374AB 20px -12px 2px;
+}
+
 aside {
   width: 100px;
 }
