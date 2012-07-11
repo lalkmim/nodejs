@@ -16,8 +16,8 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/public/index.html');
 });
 
-app.get('/batalha_naval', function (req, res) {
-  res.sendfile(__dirname + '/public/batalha_naval.html');
+app.get('/gomoku', function (req, res) {
+  res.sendfile(__dirname + '/public/gomokui.html');
 });
 
 io.sockets.on('connection', function (socket) {
