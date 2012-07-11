@@ -4,7 +4,7 @@
   "dependencies": {
     "express": "2.5.x",
     "socket.io": "latest",
-    "nowjs": latest
+    "nowjs": "latest"
   },
   "engines": {
     "node": "0.6.x"
