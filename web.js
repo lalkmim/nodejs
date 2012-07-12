@@ -25,7 +25,18 @@ app.get('/gomoku', function (req, res) {
 everyone.now.criarSala = function() {
   console.log('>>> everyone.now.criarSala');
   console.log(this.user.clientId);
-  console.log(this.user.clientI);
+  
+  if(everyone.now.listaSalasDisponiveis == 'undefined')
+    everyone.now.listaSalasDisponiveis = new Array();
+  
+  var novaSala = 'sala' + parseInt(Math.random()*100000, 10);
+  everyone.now.listaSalasDisponiveis.push(novaSala);
+  
+  group = nowjs.getGroup(novaSala);
+  group.addUser(this.user.clientId);
+  
+  this.now.status = 1;
+  this.now.msg('Aguardando adversário...');
 }
 
 io.sockets.on('connection', function (socket) {

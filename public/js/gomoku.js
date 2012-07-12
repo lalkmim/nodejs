@@ -2,6 +2,8 @@ $(document).ready(function() {
   desenharTabuleiro($('#mesa')[0], 40, 30);
   
   now.ready(function() {
+    atualizarComboSalas();
+    
     $('#select_salas').live('change', function(dados) {
       if(this.selectedIndex == 1) {
         this.disabled = true;
@@ -12,8 +14,9 @@ $(document).ready(function() {
       }
     });
     
-    now.receberJogada = function(dados) {
-      var nome = '';
+    now.msg = function(texto) {
+      $('#mensagem').append(texto);
+      $('#mensagem').append('<br/>');
     }
   });
 });
@@ -42,5 +45,14 @@ function cellClickHelper(i, j) {
     } else {
       alert('Por favor, aguarde sua vez.');
     }
+  }
+}
+
+function atualizarComboSalas() {
+  var opts = $('#select_salas').attr('options');
+  
+  for(var i=0; i<now.listaSalasDisponiveis; i++) {
+    var sala = now.listaSalasDisponiveis[i];
+    opts[opts.length] = new Option(sala, sala.id, true, true);
   }
 }
