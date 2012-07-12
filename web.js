@@ -1,7 +1,8 @@
-var nowjs = require('express');
+var nowjs = require('now');
 var express = require('express');
 var app = express.createServer();
 var io = require('socket.io').listen(app);
+var everyone = nowjs.initialize(app);
 
 var usuarios = new Object();
 var salas = new Object();
