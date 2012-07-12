@@ -18,7 +18,7 @@ $(document).ready(function() {
 function desenharTabuleiro(div, linhas, colunas) {
   var table = $(document.createElement('table')).attr('id', 'tabuleiro');
   
-  div.appendChild(table);
+  div.appendChild(table[0]);
   
   for(var i=0; i<linhas; i++) {
     var linha = table.insertRow();
