@@ -3,7 +3,10 @@ $(document).ready(function() {
   
   now.ready(function() {
     $('#select_salas').live('change', function(dados) {
-      if(this.selectedIndex != 0) {
+      if(this.selectedIndex == 1) {
+        this.disabled = true;
+        now.criarSala();
+      } else if(this.selectedIndex > 1) {
         this.disabled = true;
         now.entrarSala(this.options[this.selectedIndex].value);
       }
@@ -36,7 +39,6 @@ function cellClickHelper(i, j) {
     if(now.vez == now.player) {
       $('#tabuleiro')[0].rows[i].cells[j].innerText(now.simbolo);
       now.vez = 1 - now.vez;
-      
     } else {
       alert('Por favor, aguarde sua vez.');
     }

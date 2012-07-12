@@ -1,7 +1,7 @@
-var nowjs = require('now');
 var express = require('express');
 var app = express.createServer();
 var io = require('socket.io').listen(app);
+var nowjs = require('now');
 var everyone = nowjs.initialize(app);
 
 var usuarios = new Object();
@@ -21,6 +21,12 @@ app.get('/', function (req, res) {
 app.get('/gomoku', function (req, res) {
   res.sendfile(__dirname + '/public/gomoku.html');
 });
+
+everyone.now.criarSala = function() {
+  console.log('>>> everyone.now.criarSala');
+  console.log(this.user.clientId);
+  console.log(this.user.clientI);
+}
 
 io.sockets.on('connection', function (socket) {
   console.log('>>> socket.transport: ');
