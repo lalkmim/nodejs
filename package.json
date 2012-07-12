@@ -1,10 +1,10 @@
 {
-  "name": "node-example",
-  "version": "0.0.1",
+  "name": "gomoku",
+  "version": "0.1",
   "dependencies": {
     "express": "2.5.x",
     "socket.io": "latest",
-    "now": "latest"
+    "now": ">=0.7.4"
   },
   "engines": {
     "node": "0.6.x"

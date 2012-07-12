@@ -2,6 +2,13 @@ $(document).ready(function() {
   desenharTabuleiro($('#mesa')[0], 40, 30);
   
   now.ready(function() {
+    $('#select_salas').live('change', function(dados) {
+      if(this.selectedIndex != 0) {
+        this.disabled = true;
+        now.entrarSala(this.options[this.selectedIndex].value);
+      }
+    });
+    
     now.receberJogada = function(dados) {
       var nome = '';
     }
