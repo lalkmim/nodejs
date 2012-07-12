@@ -33,8 +33,12 @@ function desenharTabuleiro(div, linhas, colunas) {
   
 function cellClickHelper(i, j) {
   return function(i, j) {
-    if(now.vez == now.player
-    $('#tabuleiro').rows[i].cells[j].innerText(now.simbolo);
-    now.vez = 1 - now.vez;
+    if(now.vez == now.player) {
+      $('#tabuleiro').rows[i].cells[j].innerText(now.simbolo);
+      now.vez = 1 - now.vez;
+      
+    } else {
+      alert('Por favor, aguarde sua vez.');
+    }
   }
 }
