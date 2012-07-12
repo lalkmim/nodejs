@@ -24,17 +24,17 @@ function desenharTabuleiro(div, linhas, colunas) {
     var linha = table.insertRow();
     for(var j=0; j<colunas; j++) {
       var celula = linha.insertCell();
-      celula.css('cursor', 'pointer');
-      celula.css('text-align', 'center');
-      celula.live('click', cellClickHelper(i, j));
+      celula.style.cursor = 'pointer';
+      celula.textAlign = 'center';
+      celula.onclick = cellClickHelper(i, j);
     }
   }
 }
   
 function cellClickHelper(i, j) {
-  return function(i, j) {
+  return function() {
     if(now.vez == now.player) {
-      $('#tabuleiro').rows[i].cells[j].innerText(now.simbolo);
+      $('#tabuleiro')[0].rows[i].cells[j].innerText(now.simbolo);
       now.vez = 1 - now.vez;
       
     } else {
