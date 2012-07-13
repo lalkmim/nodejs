@@ -55,6 +55,7 @@ $(document).ready(function() {
         } else {
           alert('Você ganhou!');
         }
+        $('#tabuleiro td').unbind('click');
       } else if(now.vez == now.player) {
         now.msg('Sua vez!');
       }
