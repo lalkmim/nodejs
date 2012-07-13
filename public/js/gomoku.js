@@ -41,6 +41,7 @@ $(document).ready(function() {
     now.atualizarComboSalas();
     
     $('#select_salas').removeAttr('disabled');
+    now.msg('Conectado! Selecione a sala desejada.');
   });
 });
   
