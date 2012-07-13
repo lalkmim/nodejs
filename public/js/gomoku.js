@@ -44,9 +44,6 @@ function desenharTabuleiro(div, linhas, colunas) {
     var linha = table.insertRow();
     for(var j=0; j<colunas; j++) {
       var celula = linha.insertCell();
-      celula.style.cursor = 'pointer';
-      celula.style.width = celula.style.height = '10px';
-      celula.textAlign = 'center';
       celula.onclick = cellClickHelper(i, j);
     }
   }
@@ -56,6 +53,7 @@ function cellClickHelper(i, j) {
   return function() {
     if(now.vez == now.player) {
       $('#tabuleiro')[0].rows[i].cells[j].innerText(now.simbolo);
+      $(this).unbind('click');
       now.vez = 1 - now.vez;
     } else {
       alert('Por favor, aguarde sua vez.');

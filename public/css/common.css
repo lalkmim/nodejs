@@ -81,3 +81,11 @@ li {
   vertical-align: middle;
   padding-top: 7px;
 }
+
+#tabuleiro td {
+  border: 1px solid #555555;
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  cursor: pointer;
+}
