@@ -73,9 +73,9 @@ function desenharTabuleiro(div, linhas, colunas) {
   div.appendChild(table);
   
   for(var i=0; i<linhas; i++) {
-    var linha = table.insertRow();
+    var linha = table.insertRow(i);
     for(var j=0; j<colunas; j++) {
-      var celula = linha.insertCell();
+      var celula = linha.insertCell(j);
       celula.id = 'cell_' + i + '_' + j;
       $('#' + celula.id).bind('click', cellClickHelper(i, j));
     }
