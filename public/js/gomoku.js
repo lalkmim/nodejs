@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('#select_salas').attr('disabled', 'disabled');
   desenharTabuleiro($('#mesa')[0], 40, 30);
   
   now.ready(function() {
@@ -6,9 +7,13 @@ $(document).ready(function() {
       if(this.selectedIndex == 1) {
         this.disabled = true;
         now.criarSala();
+        now.simbolo = 'X';
+        now.vez = 0;
       } else if(this.selectedIndex > 1) {
         this.disabled = true;
         now.entrarSala(this.options[this.selectedIndex].value);
+        now.simbolo = 'O';
+        now.vez = 0;
       }
     });
     
@@ -16,22 +21,24 @@ $(document).ready(function() {
       $('#mensagem').append(texto);
       $('#mensagem').append('<br/>');
     }
-  
-  now.atualizarComboSalas = function() {
-    console.log('>>> now.atualizarComboSalas');
+      
+    now.atualizarComboSalas = function() {
+      console.log('>>> now.atualizarComboSalas');
       var opts = $('#select_salas').find('option');
-    
-    while(opts.length > 2) {
-    $('#select_salas').find('option:last').remove();
-    }
-
+      
+      while(opts.length > 2) {
+        $('#select_salas').find('option:last').remove();
+      }
+      
       for(var i=0; i<now.listaSalasDisponiveis; i++) {
         var sala = now.listaSalasDisponiveis[i];
         opts[opts.length] = new Option(sala, sala, true, true);
       }
     }
-  
-  now.atualizarComboSalas();
+    
+    now.atualizarComboSalas();
+    
+    $('#select_salas').attr('disabled', 'disabled');
   });
 });
   
@@ -51,6 +58,7 @@ function desenharTabuleiro(div, linhas, colunas) {
   
 function cellClickHelper(i, j) {
   return function() {
+    console.log(i + ' - ' + j + ': ' + now.simbolo);
     if(now.vez == now.player) {
       $('#tabuleiro')[0].rows[i].cells[j].innerText(now.simbolo);
       $(this).unbind('click');
