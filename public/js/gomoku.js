@@ -35,7 +35,7 @@ $(document).ready(function() {
       
       if(typeof now.listaSalasDisponiveis != 'undefined') {
         for(var i=0; i<now.listaSalasDisponiveis.length; i++) {
-          var sala = now.listaSalasDisponiveis[i]
+          var sala = now.listaSalasDisponiveis[i];
           $('#select_salas').append(new Option(sala, sala, true, false));
         }
       }
