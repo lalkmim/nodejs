@@ -38,7 +38,7 @@ $(document).ready(function() {
     
     now.atualizarComboSalas();
     
-    $('#select_salas').attr('disabled', 'disabled');
+    $('#select_salas').removeAttr('disabled');
   });
 });
   
