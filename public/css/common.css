@@ -84,12 +84,13 @@ li {
 
 #tabuleiro td {
   border: 1px solid #555555;
-  width: 20px;
+  width: 22px;
   height: 20px;
   padding: 0;
   margin: 0;
   text-align: center;
   cursor: pointer;
+  font-weight: bold;
 }
 
 #mensagem, #salas {

@@ -66,7 +66,7 @@ function desenharTabuleiro(div, linhas, colunas) {
     for(var j=0; j<colunas; j++) {
       var celula = linha.insertCell();
       celula.id = 'cell_' + i + '_' + j;
-      celula.onclick = cellClickHelper(i, j);
+      $('#' + celula.id).bind('click', cellClickHelper(i, j));
     }
   }
 }
