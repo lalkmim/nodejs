@@ -2,8 +2,6 @@ $(document).ready(function() {
   desenharTabuleiro($('#mesa')[0], 40, 30);
   
   now.ready(function() {
-    now.atualizarComboSalas();
-    
     $('#select_salas').live('change', function(dados) {
       if(this.selectedIndex == 1) {
         this.disabled = true;
@@ -31,6 +29,8 @@ $(document).ready(function() {
         opts[opts.length] = new Option(sala, sala, true, true);
       }
     }
+	
+	now.atualizarComboSalas();
   });
 });
   
