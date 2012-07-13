@@ -2,7 +2,7 @@ $(document).ready(function() {
   $('#select_salas').attr('disabled', 'disabled');
   desenharTabuleiro($('#mesa')[0], 40, 30);
   
-  $('#mensagem').append('Conectando e carregando informações...<br/>');
+  $('#mensagem').append('<span>&gt;&gt;&gt; Conectando e carregando informações...</span><br/>');
   
   now.ready(function() {
     $('#select_salas').live('change', function(dados) {
@@ -35,8 +35,8 @@ $(document).ready(function() {
       
       if(typeof now.listaSalasDisponiveis != 'undefined') {
         for(var i=0; i<now.listaSalasDisponiveis.length; i++) {
-          var sala = now.listaSalasDisponiveis[i];
-          opts[opts.length] = new Option(sala, sala, true, true);
+          var sala = now.listaSalasDisponiveis[i]
+          $('#select_salas').append(new Option(sala, sala, true, false));
         }
       }
     }
