@@ -107,7 +107,7 @@ function verificaVertical(i, j, simbolo) {
   var contador = max = 0;
   
   for(var k=i-4; k<i+4; k++) {
-    if($('#cell_' + k + '_' + j).val() == simbolo)
+    if($('#cell_' + k + '_' + j).text() == simbolo)
       contador++;
     else
       contador = 0;
@@ -122,7 +122,7 @@ function verificaHorizontal(i, j, simbolo) {
   var contador = max = 0;
   
   for(var k=j-4; k<j+4; k++) {
-    if($('#cell_' + i + '_' + k).val() == simbolo)
+    if($('#cell_' + i + '_' + k).text() == simbolo)
       contador++;
     else
       contador = 0;
@@ -137,7 +137,7 @@ function verificaDiagonais(i, j, simbolo) {
   var contador = max = 0;
   
   for(var k=-4; k<5; k++) {
-    if($('#cell_' + (i+k) + '_' + (j+k)).val() == simbolo)
+    if($('#cell_' + (i+k) + '_' + (j+k)).text() == simbolo)
       contador++;
     else
       contador = 0;
@@ -146,7 +146,7 @@ function verificaDiagonais(i, j, simbolo) {
   }
   
   for(var k=-4; k<5; k++) {
-    if($('#cell_' + (i+k) + '_' + (j-k)).val() == simbolo)
+    if($('#cell_' + (i+k) + '_' + (j-k)).text() == simbolo)
       contador++;
     else
       contador = 0;
