@@ -91,3 +91,7 @@ li {
   text-align: center;
   cursor: pointer;
 }
+
+#mensagem, #salas {
+  width: 100px;
+}
