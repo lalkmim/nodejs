@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('#select_salas').attr('disabled', 'disabled');
-  desenharTabuleiro($('#mesa')[0], 40, 30);
+  desenharTabuleiro($('#mesa')[0], 25, 30);
   
   $('#mensagem').append('<span>&gt;&gt;&gt; Conectando e carregando informações...</span><br/>');
   
