@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('#select_salas').attr('disabled', 'disabled');
-  desenharTabuleiro($('#mesa')[0], 25, 25);
+  desenharTabuleiro($('#mesa')[0], 20, 20);
   
   $('#mensagem').append('<span>&gt;&gt;&gt; Conectando e carregando informações...</span><br/>');
   
@@ -46,7 +46,16 @@ $(document).ready(function() {
     now.informarVez = function(simbolo, buscaId) {
       $(buscaId).text(simbolo);
       $(buscaId).unbind('click');
-      if(now.vez == now.player) {
+      
+      var ganhou = verificaVencedor(buscaId, simbolo);
+      
+      if(ganhou) {
+        if(now.vez == now.player) {
+          alert('Você perdeu!');
+        } else {
+          alert('Você ganhou!');
+        }
+      } else if(now.vez == now.player) {
         now.msg('Sua vez!');
       }
     }
@@ -85,4 +94,65 @@ function cellClickHelper(i, j) {
       alert('Por favor, aguarde sua vez.');
     }
   }
+}
+
+function verificaVencedor(buscaId, simbolo) {
+  var i = parseInt(buscaId.split('_')[1], 10);
+  var j = parseInt(buscaId.split('_')[2], 10);
+  
+  return (verificaVertical(i, j, simbolo) || verificaHorizontal(i, j, simbolo) || verificaDiagonais(i, j, simbolo));
+}
+
+function verificaVertical(i, j, simbolo) {
+  var contador = max = 0;
+  
+  for(var k=i-4; k<i+4; k++) {
+    if($('#cell_' + k + '_' + j).val() == simbolo)
+      contador++;
+    else
+      contador = 0;
+    
+    max = contador > max ? contador : max;
+  }
+      
+  return (max >= 5);
+}
+
+function verificaHorizontal(i, j, simbolo) {
+  var contador = max = 0;
+  
+  for(var k=j-4; k<j+4; k++) {
+    if($('#cell_' + i + '_' + k).val() == simbolo)
+      contador++;
+    else
+      contador = 0;
+    
+    max = contador > max ? contador : max;
+  }
+      
+  return (max >= 5);
+}
+
+function verificaDiagonais(i, j, simbolo) {
+  var contador = max = 0;
+  
+  for(var k=-4; k<5; k++) {
+    if($('#cell_' + (i+k) + '_' + (j+k)).val() == simbolo)
+      contador++;
+    else
+      contador = 0;
+    
+    max = contador > max ? contador : max;
+  }
+  
+  for(var k=-4; k<5; k++) {
+    if($('#cell_' + (i+k) + '_' + (j-k)).val() == simbolo)
+      contador++;
+    else
+      contador = 0;
+    
+    max = contador > max ? contador : max;
+  }
+      
+  return (max >= 5);
 }
