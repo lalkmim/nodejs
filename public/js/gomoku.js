@@ -16,22 +16,22 @@ $(document).ready(function() {
       $('#mensagem').append(texto);
       $('#mensagem').append('<br/>');
     }
-	
-	now.atualizarComboSalas = function() {
-	  console.log('>>> now.atualizarComboSalas');
+  
+  now.atualizarComboSalas = function() {
+    console.log('>>> now.atualizarComboSalas');
       var opts = $('#select_salas').find('option');
-	  
-	  while(opts.length > 2) {
-		$('#select_salas').find('option:last').remove();
-	  }
+    
+    while(opts.length > 2) {
+    $('#select_salas').find('option:last').remove();
+    }
 
       for(var i=0; i<now.listaSalasDisponiveis; i++) {
         var sala = now.listaSalasDisponiveis[i];
         opts[opts.length] = new Option(sala, sala, true, true);
       }
     }
-	
-	now.atualizarComboSalas();
+  
+  now.atualizarComboSalas();
   });
 });
   
@@ -45,6 +45,7 @@ function desenharTabuleiro(div, linhas, colunas) {
     for(var j=0; j<colunas; j++) {
       var celula = linha.insertCell();
       celula.style.cursor = 'pointer';
+      celula.style.width = celula.style.height = '10px';
       celula.textAlign = 'center';
       celula.onclick = cellClickHelper(i, j);
     }
