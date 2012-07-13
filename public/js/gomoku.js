@@ -2,6 +2,8 @@ $(document).ready(function() {
   $('#select_salas').attr('disabled', 'disabled');
   desenharTabuleiro($('#mesa')[0], 40, 30);
   
+  $('#mensagem').append('Conectando e carregando informações...<br/>');
+  
   now.ready(function() {
     $('#select_salas').live('change', function(dados) {
       if(this.selectedIndex == 1) {
