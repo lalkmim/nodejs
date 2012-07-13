@@ -50,18 +50,11 @@ everyone.now.entrarSala = function(sala) {
   everyone.now.atualizarComboSalas();
   
   group = nowjs.getGroup(sala);
+  group.addUser(this.user.clientId);
+  group.now.status = 2;
+  group.now.msg('Partida iniciada!');
   
-  group.getUsers(function(users) {
-    var adversario = users[0];
-    nowjs.getClient(adver, function() {
-      group.addUser(this.user.clientId);
-      
-      group.now.status = 2;
-      group.now.msg('Partida iniciada!');
-      
-      this.now.msg('Sua vez!');
-    });
-  });
+  this.now.msg('Sua vez!');
 }
 
 io.sockets.on('connection', function (socket) {

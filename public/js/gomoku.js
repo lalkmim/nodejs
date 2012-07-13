@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('#select_salas').attr('disabled', 'disabled');
-  desenharTabuleiro($('#mesa')[0], 25, 30);
+  desenharTabuleiro($('#mesa')[0], 25, 25);
   
   $('#mensagem').append('<span>&gt;&gt;&gt; Conectando e carregando informações...</span><br/>');
   
@@ -9,15 +9,15 @@ $(document).ready(function() {
       if(this.selectedIndex == 1) {
         this.disabled = true;
         now.criarSala();
-        now.simbolo = 'X';
-        now.vez = 0;
-        now.player = 0;
-      } else if(this.selectedIndex > 1) {
-        this.disabled = true;
-        now.entrarSala(this.options[this.selectedIndex].value);
         now.simbolo = 'O';
         now.vez = 0;
         now.player = 1;
+      } else if(this.selectedIndex > 1) {
+        this.disabled = true;
+        now.entrarSala(this.options[this.selectedIndex].value);
+        now.simbolo = 'X';
+        now.vez = 0;
+        now.player = 0;
       }
     });
     
