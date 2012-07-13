@@ -26,7 +26,7 @@ everyone.now.criarSala = function() {
   console.log('>>> everyone.now.criarSala');
   console.log(this.user.clientId);
   
-  if(everyone.now.listaSalasDisponiveis == 'undefined')
+  if(typeof everyone.now.listaSalasDisponiveis == 'undefined')
     everyone.now.listaSalasDisponiveis = new Array();
   
   var novaSala = 'sala' + parseInt(Math.random()*100000, 10);
