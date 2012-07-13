@@ -42,7 +42,7 @@ $(document).ready(function() {
     }
       
     now.informarVez = function() {
-      if(now.vez = now.player) {
+      if(now.vez == now.player) {
         now.msg('Sua vez!');
       }
     }
@@ -76,7 +76,7 @@ function cellClickHelper(i, j) {
       var busca_id = '#cell_' + i + '_' + j;
       $(busca_id).text(now.simbolo);
       $(busca_id).unbind('click');
-      now.atualizarVez(now.sala, 1 - now.vez);
+      now.atualizarVez(now.sala, now.simbolo, busca_id, 1 - now.vez);
     } else {
       alert('Por favor, aguarde sua vez.');
     }
