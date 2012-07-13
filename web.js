@@ -51,18 +51,18 @@ everyone.now.entrarSala = function(sala) {
   
   group = nowjs.getGroup(sala);
   
-  adversario = group.getUsers(function(users) {
+  group.getUsers(function(users) {
     return nowjs.getClient(users[0], function() {
-      return this;
+      group.addUser(this.user.clientId);
+      
+      group.now.status = 2;
+      group.now.msg('Partida iniciada!');
+      
+      this.now.msg('Sua vez!');
     });
   });
   
-  group.addUser(this.user.clientId);
   
-  group.now.status = 2;
-  group.now.msg('Partida iniciada!');
-  
-  adversario.now.msg('Sua vez!');
 }
 
 io.sockets.on('connection', function (socket) {
