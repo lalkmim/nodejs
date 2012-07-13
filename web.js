@@ -36,7 +36,7 @@ everyone.now.criarSala = function() {
   group = nowjs.getGroup(novaSala);
   group.addUser(this.user.clientId);
   group.now.status = 1;
-  group.now.msg('Aguardando adversário...');
+  group.now.msg('Sala ' + novaSala + ' criada. Aguardando adversário...');
   group.now.sala = novaSala;
 }
 
@@ -52,9 +52,10 @@ everyone.now.entrarSala = function(sala) {
   group.addUser(this.user.clientId);
   group.now.status = 2;
   group.now.sala = sala;
-  group.now.msg('Partida iniciada!');
+  group.now.msg('Você entrou na sala ' + sala + '. Partida iniciada!');
   
-  this.now.msg('Sua vez!');
+  group.now.msg('Aguarde.', '#aviso');
+  this.now.msg('Sua vez!', '#aviso');
 }
 
 everyone.now.atualizarVez = function(sala, simbolo, buscaId, vez) {

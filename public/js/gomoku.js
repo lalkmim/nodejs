@@ -21,8 +21,10 @@ $(document).ready(function() {
       }
     });
     
-    now.msg = function(texto) {
-      $('#mensagem').append('<span>&gt;&gt;&gt; ' + texto + '</span><br/>');
+    now.msg = function(texto, id) {
+      if(arguments.length < 2)
+        id = '#mensagem';
+      $(id).append('<span>&gt;&gt;&gt; ' + texto + '</span><br/>');
     }
       
     now.atualizarComboSalas = function() {
