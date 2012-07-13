@@ -57,14 +57,14 @@ everyone.now.entrarSala = function(sala) {
   this.now.msg('Sua vez!');
 }
 
-everyone.now.atualizarVez = function(sala, vez) {
+everyone.now.atualizarVez = function(sala, simbolo, buscaId, vez) {
   console.log('>>> everyone.now.atualizarVez');
   console.log('vez: ' + vez);
   console.log('sala: ' + sala);
   
   var group = nowjs.getGroup(sala);
   group.now.vez = vez;
-  group.now.informarVez(vez);
+  group.now.informarVez(simbolo, buscaId);
 }
   
 io.sockets.on('connection', function (socket) {

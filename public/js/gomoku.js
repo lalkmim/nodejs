@@ -41,7 +41,9 @@ $(document).ready(function() {
       }
     }
       
-    now.informarVez = function() {
+    now.informarVez = function(simbolo, buscaId) {
+      $(buscaId).text(simbolo);
+      $(buscaId).unbind('click');
       if(now.vez == now.player) {
         now.msg('Sua vez!');
       }
