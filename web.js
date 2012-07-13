@@ -31,6 +31,7 @@ everyone.now.criarSala = function() {
   
   var novaSala = 'sala' + parseInt(Math.random()*100000, 10);
   everyone.now.listaSalasDisponiveis.push(novaSala);
+  everyone.now.atualizarComboSalas();
   
   group = nowjs.getGroup(novaSala);
   group.addUser(this.user.clientId);
