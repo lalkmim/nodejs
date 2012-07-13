@@ -18,10 +18,10 @@ $(document).ready(function() {
     }
 	
 	now.atualizarComboSalas = function() {
-      var opts = $('#select_salas').attr('options');
+      var opts = $('#select_salas').find('option');
 	  
 	  while(opts.length > 2) {
-		$('#select_salas').find('options:last').remove();
+		$('#select_salas').find('option:last').remove();
 	  }
 
       for(var i=0; i<now.listaSalasDisponiveis; i++) {
