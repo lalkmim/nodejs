@@ -57,6 +57,7 @@ function desenharTabuleiro(div, linhas, colunas) {
     var linha = table.insertRow();
     for(var j=0; j<colunas; j++) {
       var celula = linha.insertCell();
+      celula.id = 'cell_' + i + '_' + j;
       celula.onclick = cellClickHelper(i, j);
     }
   }
@@ -66,9 +67,10 @@ function cellClickHelper(i, j) {
   return function() {
     console.log(i + ' - ' + j + ': ' + now.simbolo);
     if(now.vez == now.player) {
-      $('#tabuleiro')[0].rows[i].cells[j].innerText = now.simbolo;
-      $(this).unbind('click');
-      now.vez = 1 - now.vez;
+      var busca_id = '#cell_' + j + '_' + j;
+      $(busca_id).text(now.simbolo);
+      $(busca_id).unbind('click');
+      now.atualizarVez(1 - now.vez);
     } else {
       alert('Por favor, aguarde sua vez.');
     }

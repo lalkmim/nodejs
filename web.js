@@ -38,14 +38,13 @@ everyone.now.criarSala = function() {
   group.now.status = 1;
   group.now.msg('Aguardando adversário...');
 }
-  
+
 everyone.now.entrarSala = function(sala) {
   console.log('>>> everyone.now.entrarSala');
   console.log(this.user.clientId);
   console.log(sala);
   
   everyone.now.listaSalasDisponiveis.pop(sala);
-  
   everyone.now.atualizarComboSalas();
   
   group = nowjs.getGroup(sala);
@@ -53,9 +52,21 @@ everyone.now.entrarSala = function(sala) {
   group.now.status = 2;
   group.now.msg('Partida iniciada!');
   
-  //this.now.msg('Sua vez!');
+  this.now.msg('Sua vez!');
 }
 
+everyone.now.atualizarVez = function(vez) {
+  this.user.getGroups(function(groups) {
+    for(var i=0; i<groups.length; i++) {
+      var group = groups[i];
+      if(group != 'everyone') {
+        nowjs.getGroup(group).now.vez = vez;
+        break;
+      }
+    }
+  });
+}
+  
 io.sockets.on('connection', function (socket) {
   console.log('>>> socket.transport: ');
   console.log(socket.transport);
