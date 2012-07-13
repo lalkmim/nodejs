@@ -35,7 +35,6 @@ everyone.now.criarSala = function() {
   
   group = nowjs.getGroup(novaSala);
   group.addUser(this.user.clientId);
-  
   group.now.status = 1;
   group.now.msg('Aguardando adversário...');
 }
@@ -54,7 +53,7 @@ everyone.now.entrarSala = function(sala) {
   group.now.status = 2;
   group.now.msg('Partida iniciada!');
   
-  this.now.msg('Sua vez!');
+  //this.now.msg('Sua vez!');
 }
 
 io.sockets.on('connection', function (socket) {

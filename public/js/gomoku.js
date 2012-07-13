@@ -27,9 +27,9 @@ $(document).ready(function() {
       
     now.atualizarComboSalas = function() {
       console.log('>>> now.atualizarComboSalas');
-      var opts = $('#select_salas').find('option');
+      var opts = $('#select_salas option').length;
       
-      while(opts.length > 2) {
+      while($('#select_salas option').length > 2) {
         $('#select_salas').find('option:last').remove();
       }
       
