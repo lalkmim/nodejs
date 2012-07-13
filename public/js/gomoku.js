@@ -34,9 +34,11 @@ $(document).ready(function() {
         $('#select_salas').find('option:last').remove();
       }
       
-      for(var i=0; i<now.listaSalasDisponiveis.length; i++) {
-        var sala = now.listaSalasDisponiveis[i];
-        opts[opts.length] = new Option(sala, sala, true, true);
+      if(typeof now.listaSalasDisponiveis != 'undefined') {
+        for(var i=0; i<now.listaSalasDisponiveis.length; i++) {
+          var sala = now.listaSalasDisponiveis[i];
+          opts[opts.length] = new Option(sala, sala, true, true);
+        }
       }
     }
     
