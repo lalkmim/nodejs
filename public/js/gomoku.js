@@ -11,11 +11,13 @@ $(document).ready(function() {
         now.criarSala();
         now.simbolo = 'X';
         now.vez = 0;
+        now.player = 0;
       } else if(this.selectedIndex > 1) {
         this.disabled = true;
         now.entrarSala(this.options[this.selectedIndex].value);
         now.simbolo = 'O';
         now.vez = 0;
+        now.player = 1;
       }
     });
     
@@ -32,7 +34,7 @@ $(document).ready(function() {
         $('#select_salas').find('option:last').remove();
       }
       
-      for(var i=0; i<now.listaSalasDisponiveis; i++) {
+      for(var i=0; i<now.listaSalasDisponiveis.length; i++) {
         var sala = now.listaSalasDisponiveis[i];
         opts[opts.length] = new Option(sala, sala, true, true);
       }
@@ -63,7 +65,7 @@ function cellClickHelper(i, j) {
   return function() {
     console.log(i + ' - ' + j + ': ' + now.simbolo);
     if(now.vez == now.player) {
-      $('#tabuleiro')[0].rows[i].cells[j].innerText(now.simbolo);
+      $('#tabuleiro')[0].rows[i].cells[j].innerText = now.simbolo;
       $(this).unbind('click');
       now.vez = 1 - now.vez;
     } else {
