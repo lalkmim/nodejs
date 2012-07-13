@@ -57,7 +57,7 @@ $(document).ready(function() {
         }
         $('#tabuleiro td').unbind('click');
       } else if(now.vez == now.player) {
-        now.msg('Sua vez!');
+        now.msg('Sua vez!', '#aviso');
       }
     }
     
@@ -108,12 +108,14 @@ function verificaVertical(i, j, simbolo) {
   var contador = max = 0;
   
   for(var k=i-4; k<i+4; k++) {
-    if($('#cell_' + k + '_' + j).text() == simbolo)
-      contador++;
-    else
-      contador = 0;
+    var id = '#cell_' + k + '_' + j;
+        
+    if($(id).length == 0)
+      continue;
+        
+    ($(id).text() == simbolo ? contador++ : contador = 0);
     
-    max = contador > max ? contador : max;
+    max = (contador > max ? contador : max);
   }
       
   return (max >= 5);
@@ -123,12 +125,14 @@ function verificaHorizontal(i, j, simbolo) {
   var contador = max = 0;
   
   for(var k=j-4; k<j+4; k++) {
-    if($('#cell_' + i + '_' + k).text() == simbolo)
-      contador++;
-    else
-      contador = 0;
+    var id = '#cell_' + i + '_' + k;
     
-    max = contador > max ? contador : max;
+    if($(id).length == 0)
+      continue;
+
+    ($(id).text() == simbolo ? contador++ : contador = 0);
+    
+    max = (contador > max ? contador : max);
   }
       
   return (max >= 5);
@@ -138,21 +142,25 @@ function verificaDiagonais(i, j, simbolo) {
   var contador = max = 0;
   
   for(var k=-4; k<5; k++) {
-    if($('#cell_' + (i+k) + '_' + (j+k)).text() == simbolo)
-      contador++;
-    else
-      contador = 0;
+    var id = '#cell_' + (i+k) + '_' + (j+k);
     
-    max = contador > max ? contador : max;
+    if($(id).length == 0)
+      continue;
+        
+    ($(id).text() == simbolo ? contador++ : contador = 0);
+    
+    max = (contador > max ? contador : max);
   }
   
   for(var k=-4; k<5; k++) {
-    if($('#cell_' + (i+k) + '_' + (j-k)).text() == simbolo)
-      contador++;
-    else
-      contador = 0;
+    var id = '#cell_' + (i+k) + '_' + (j-k);
     
-    max = contador > max ? contador : max;
+    if($(id).length == 0)
+      continue;
+    
+    ($(id).text() == simbolo ? contador++ : contador = 0);
+    
+    max = (contador > max ? contador : max);
   }
       
   return (max >= 5);
