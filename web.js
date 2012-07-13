@@ -52,7 +52,8 @@ everyone.now.entrarSala = function(sala) {
   group = nowjs.getGroup(sala);
   
   group.getUsers(function(users) {
-    return nowjs.getClient(users[0], function() {
+    var adversario = users[0];
+    nowjs.getClient(adver, function() {
       group.addUser(this.user.clientId);
       
       group.now.status = 2;
@@ -61,8 +62,6 @@ everyone.now.entrarSala = function(sala) {
       this.now.msg('Sua vez!');
     });
   });
-  
-  
 }
 
 io.sockets.on('connection', function (socket) {
