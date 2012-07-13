@@ -18,6 +18,7 @@ $(document).ready(function() {
     }
 	
 	now.atualizarComboSalas = function() {
+	  console.log('>>> now.atualizarComboSalas');
       var opts = $('#select_salas').find('option');
 	  
 	  while(opts.length > 2) {
