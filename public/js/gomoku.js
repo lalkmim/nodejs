@@ -40,6 +40,12 @@ $(document).ready(function() {
         }
       }
     }
+      
+    now.informarVez = function() {
+      if(now.vez = now.player) {
+        now.msg('Sua vez!');
+      }
+    }
     
     now.atualizarComboSalas();
     
@@ -67,10 +73,10 @@ function cellClickHelper(i, j) {
   return function() {
     console.log(i + ' - ' + j + ': ' + now.simbolo);
     if(now.vez == now.player) {
-      var busca_id = '#cell_' + j + '_' + j;
+      var busca_id = '#cell_' + i + '_' + j;
       $(busca_id).text(now.simbolo);
       $(busca_id).unbind('click');
-      now.atualizarVez(1 - now.vez);
+      now.atualizarVez(now.sala, 1 - now.vez);
     } else {
       alert('Por favor, aguarde sua vez.');
     }
