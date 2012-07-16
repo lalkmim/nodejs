@@ -110,8 +110,10 @@ function verificaVertical(i, j, simbolo) {
   for(var k=i-4; k<i+4; k++) {
     var id = '#cell_' + k + '_' + j;
         
-    if($(id).length == 0)
+    if($(id).length == 0) {
+      contador = 0;
       continue;
+    }
         
     ($(id).text() == simbolo ? contador++ : contador = 0);
     
@@ -127,8 +129,10 @@ function verificaHorizontal(i, j, simbolo) {
   for(var k=j-4; k<j+4; k++) {
     var id = '#cell_' + i + '_' + k;
     
-    if($(id).length == 0)
+    if($(id).length == 0) {
+      contador = 0;
       continue;
+    }
 
     ($(id).text() == simbolo ? contador++ : contador = 0);
     
@@ -144,8 +148,10 @@ function verificaDiagonais(i, j, simbolo) {
   for(var k=-4; k<5; k++) {
     var id = '#cell_' + (i+k) + '_' + (j+k);
     
-    if($(id).length == 0)
+    if($(id).length == 0) {
+      contador = 0;
       continue;
+    }
         
     ($(id).text() == simbolo ? contador++ : contador = 0);
     
@@ -155,8 +161,10 @@ function verificaDiagonais(i, j, simbolo) {
   for(var k=-4; k<5; k++) {
     var id = '#cell_' + (i+k) + '_' + (j-k);
     
-    if($(id).length == 0)
+    if($(id).length == 0) {
+      contador = 0;
       continue;
+    }
     
     ($(id).text() == simbolo ? contador++ : contador = 0);
     
